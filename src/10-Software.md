@@ -3,8 +3,10 @@
 以下のソフトウェアを動作させる。
 
 - sendmail
-- dovecot
 - procmail
+- dovecot
+
+プログラムの動作確認は、Vagrantで行う。コンフィグファイル修正は、基本的にsedで行う。
 
 ## 実装目標
 
