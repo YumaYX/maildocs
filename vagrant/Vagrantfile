@@ -1,0 +1,36 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'almalinux/9'
+
+  config.vm.provider 'libvirt' do |vb|
+    vb.memory = 1024 * 2
+    vb.cpus = 2
+    vb.video_type = 'virtio'
+  end
+
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+
+  # Server
+  config.vm.define 'server1' do |server|
+    server.vm.hostname = 'server1.local'
+    server.vm.network 'private_network', ip: '172.17.64.100'
+    server.vm.provision 'shell', inline: <<~SHELL1
+      echo server1
+SHELL1
+  end
+
+  # Server
+  config.vm.define 'server2' do |server|
+    server.vm.hostname = 'server2.local'
+    server.vm.network 'private_network', ip: '172.17.64.101'
+    server.vm.provision 'shell', inline: <<~SHELL2
+      echo server2
+SHELL2
+  end
+
+  config.vm.provision 'shell', inline: <<~SHELLC
+    echo common
+  SHELLC
+end
