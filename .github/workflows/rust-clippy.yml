@@ -12,12 +12,11 @@ jobs:
       contents: read
       security-events: write
       actions: read
-      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run mdbook build
+      - name: install mdbook
         run: cargo install mdbook
 
       - name: Run mdbook build
