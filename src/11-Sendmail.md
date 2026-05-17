@@ -38,7 +38,7 @@ DAEMON_OPTIONS(`Port=smtp,Addr=127.0.0.1, Name=MTA')dnl
 ```
 
 ```
-dnl # 先頭にdnlをつけてコメントにする。
+# 先頭にdnlをつけてコメントにする。
 sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
 ```
 
