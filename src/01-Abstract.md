@@ -23,3 +23,7 @@
 - AlmaLinux release 9.7 (Moss Jungle Cat)
 - Vagrant 2.4.9
   - host: AlmaLinux release 10.1 (Heliotrope Lion)
+
+## その他
+
+メールサーバーは、運用難易度が非常に高いため、安易な覚悟でデプロイ出来ない。
