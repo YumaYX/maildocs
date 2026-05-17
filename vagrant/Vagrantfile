@@ -60,8 +60,7 @@ LHN
 
       # no need db generating by hand
       cat <<'EOF' | sudo tee -a /etc/mail/access
-#Connect:server1.local    RELAY
-To:server1 RELAY
+Connect:server1.local    RELAY
 EOF
       # ?
       cat <<'EOF' | sudo tee /etc/mail/mailertable               
@@ -93,5 +92,11 @@ LOGFILE=$HOME/procmail.log
 VERBOSE=on
 PROCMAILEOF
     install -o vagrant -g vagrant -m 0755 -d /home/vagrant/Maildir
+
+    # DOVECOT
+    sudo yum install -y dovecot
+sed -i 's/^#protocols/protocols/g' /etc/dovecot/dovecot.conf
+systemctl restart dovecot
+
   SHELLC
 end
