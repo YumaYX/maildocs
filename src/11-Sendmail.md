@@ -29,13 +29,16 @@ sudo systemctl restart sendmail
 
 dnl:Delete to New Lineなので、dnlはコメント行
 
-smtpを受け付けるネットワーク範囲の設定。有効行の場合、localhostのみ。なしor無効行の場合、全リッスン。
+#### smtp受付ネットワーク範囲設定
+
+有効行の場合、localhostのみ。なしor無効行の場合、全リッスン。
 
 ```
 DAEMON_OPTIONS(`Port=smtp,Addr=127.0.0.1, Name=MTA')dnl
 ```
 
 ```
+dnl # 先頭にdnlをつけてコメントにする。
 sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
 ```
 
