@@ -55,7 +55,7 @@ sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
 > RELAY: リレーを許可する (trasmission of messages from a site outside your host (class{w}) to another site except yours)
 > REJECT: 拒否する
 
-[sendmailのインストール](https://www.bigbang.mydns.jp/sendmail-xx.htm#access)
+[sendmailのインストール](https://www.bigbang.mydns.jp/sendmail-xx.htm#access)より。
 
 ```
 # /はor。実際には、ひとつずつ選択する。
