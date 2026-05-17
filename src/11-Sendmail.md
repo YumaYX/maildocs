@@ -2,6 +2,8 @@
 
 本稿では、Sendmailを使用する。
 
+2026/5時点で、RHELからSendmailの使用は非推奨となっているため、本番環境では使用出来ない。
+
 > Sendmail：古くからある標準的なMTAで、柔軟性が高い反面、設定が難解
 > Postfix：Sendmail互換でありながら、セキュリティと性能が向上しており、設定が簡潔
 
@@ -59,13 +61,14 @@ Connect/To/From:domain OK/RELAY/REJECT
 
 - server1.local から接続してきたクライアントにはリレーを許可する
 - /etc/mail/access.dbを手動で生成する必要はなかった。sendmailを再起動しているから？
-- connect:server1.localは動作したが、to:server1は動作しなかった。
-    - server2からメールを送ると、メールが送られる。他の設定に原因がありそう。
-
+- server1より、connect:server1.local realyは動作した。to:server1は動作しなかった。
+    - server2からメールを送ると、メールが送られる。他の設定に要因がありそう。
 
 ### /etc/mail/local-host-names
 
-server1側：メール受け取りドメイン
+server1側：
+
+メール受け取りドメイン設定コンフィグ。
 
 ```sh
 sudo cat <<'LHN' | sudo tee /etc/mail/local-host-names
@@ -76,6 +79,10 @@ LHN
 ### /etc/mail/mailertable
 
 server2側：
+
+特定ドメイン宛てのメールの配送先や配送方法（メーラ）を制御するためのルーティングテーブル。
+
+今回はDNS不使用、MXレコードが使えないため、設定が必要となる。
 
 ```sh
 cat <<'EOF' | sudo tee /etc/mail/mailertable
