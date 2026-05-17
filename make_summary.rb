@@ -1,6 +1,7 @@
 
 links = Dir.glob("src/*.md").map do |path|
   filename = File.basename(path)
+  filename = filename.sub(/^\d+-/, "")
   title = File.basename(filename, ".md") 
   title = File.basename(title, ".markdown") 
   "- [#{title}](./#{filename})"
