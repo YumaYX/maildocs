@@ -59,13 +59,14 @@ Connect/To/From:domain OK/RELAY/REJECT
 
 - server1.local から接続してきたクライアントにはリレーを許可する
 - /etc/mail/access.dbを手動で生成する必要はなかった。sendmailを再起動しているから？
-- connect:server1.localは動作したが、to:server1は動作しなかった。
-    - server2からメールを送ると、メールが送られる。他の設定に原因がありそう。
-
+- server1より、connect:server1.local realyは動作した。to:server1は動作しなかった。
+    - server2からメールを送ると、メールが送られる。他の設定に要因がありそう。
 
 ### /etc/mail/local-host-names
 
-server1側：メール受け取りドメイン
+server1側：
+
+メール受け取りドメイン設定コンフィグ。
 
 ```sh
 sudo cat <<'LHN' | sudo tee /etc/mail/local-host-names
@@ -76,6 +77,10 @@ LHN
 ### /etc/mail/mailertable
 
 server2側：
+
+特定ドメイン宛てのメールの配送先や配送方法（メーラ）を制御するためのルーティングテーブル。
+
+今回はDNS不使用、MXレコードが使えないため、設定が必要となる。
 
 ```sh
 cat <<'EOF' | sudo tee /etc/mail/mailertable
