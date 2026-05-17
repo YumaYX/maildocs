@@ -10,7 +10,7 @@
 
 ## MXレコードの名前解決
 
-user@example.comにメールが送られる場合：
+MTAから、`user@example.com`にメールが送られる場合：
 
 1. メールアドレスのドメイン(example.com)でDNS問い合わせ
 1. MXレコードを取得(mail.example.com)
