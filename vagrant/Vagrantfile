@@ -43,7 +43,11 @@ LHN
       
       sleep 5
       echo
+      echo "####### /var/spool #######"
       sudo cat /var/spool/mail/vagrant
+
+      echo "####### MAILDIR #######"
+      sudo cat /home/vagrant/Maildir/*
     SHELL1
   end
 
@@ -80,6 +84,14 @@ EOF
 ETCHOSTS
 
     sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
-    
+
+
+    cat <<'PROCMAILEOF' | tee /etc/procmailrc
+MAILDIR=$HOME/Maildir
+DEFAULT=$MAILDIR
+LOGFILE=$HOME/procmail.log
+VERBOSE=on
+PROCMAILEOF
+    install -o vagrant -g vagrant -m 0755 -d /home/vagrant/Maildir
   SHELLC
 end
