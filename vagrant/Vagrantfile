@@ -27,7 +27,7 @@ LHN
       sudo m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
       sudo systemctl restart sendmail
 
-      sleep 15
+      sleep 60
 
       {
         echo "HELO server1"
@@ -41,13 +41,24 @@ LHN
         echo "QUIT"
       } | nc server2 25
       
-      sleep 5
+      sleep 3
       echo
       echo "####### /var/spool #######"
       sudo cat /var/spool/mail/vagrant
 
+      echo
       echo "####### MAILDIR #######"
       sudo cat /home/vagrant/Maildir/*
+
+      echo
+      echo "####### MAILDIR #######"
+      {
+        echo USER vagrant
+        echo PASS vagrant
+        echo LIST
+        echo RETR 1
+        echo QUIT
+      } | nc localhost 110
     SHELL1
   end
 
@@ -62,7 +73,6 @@ LHN
       cat <<'EOF' | sudo tee -a /etc/mail/access
 Connect:server1.local    RELAY
 EOF
-      # ?
       cat <<'EOF' | sudo tee /etc/mail/mailertable               
 server1    esmtp:[172.17.64.100]
 EOF
@@ -85,17 +95,21 @@ ETCHOSTS
     sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
 
 
-    cat <<'PROCMAILEOF' | tee /etc/procmailrc
+    cat <<'PROCMAILEOF' | sudo tee /etc/procmailrc
 MAILDIR=$HOME/Maildir
 DEFAULT=$MAILDIR
 LOGFILE=$HOME/procmail.log
 VERBOSE=on
 PROCMAILEOF
+
     install -o vagrant -g vagrant -m 0755 -d /home/vagrant/Maildir
 
     # DOVECOT
     sudo yum install -y dovecot
-sed -i 's/^#protocols/protocols/g' /etc/dovecot/dovecot.conf
+    sed -i 's/^#protocols/protocols/g' /etc/dovecot/dovecot.conf
+    sed -i 's@^#   mail_location = maildir@   mail_location = maildir@g' /etc/dovecot/conf.d/10-mail.conf
+    sed -i 's@^ssl = required@ssl = no@g' /etc/dovecot/conf.d/10-ssl.conf
+
 systemctl restart dovecot
 
   SHELLC
