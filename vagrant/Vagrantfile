@@ -41,7 +41,7 @@ LHN
         echo "QUIT"
       } | nc server2 25
       
-      sleep 3
+      sleep 60
       echo
       echo "####### /var/spool #######"
       sudo cat /var/spool/mail/vagrant
@@ -49,6 +49,8 @@ LHN
       echo
       echo "####### MAILDIR #######"
       sudo cat /home/vagrant/Maildir/*
+
+      (echo vagrant; echo vagrant) | sudo passwd vagrant
 
       echo
       echo "####### MAILDIR #######"
@@ -96,7 +98,7 @@ ETCHOSTS
 
 
     cat <<'PROCMAILEOF' | sudo tee /etc/procmailrc
-MAILDIR=$HOME/Maildir
+MAILDIR=$HOME/Maildir/
 DEFAULT=$MAILDIR
 LOGFILE=$HOME/procmail.log
 VERBOSE=on
