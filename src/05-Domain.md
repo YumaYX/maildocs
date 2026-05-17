@@ -19,7 +19,7 @@ MTAから、`user@example.com`にメールが送られる場合：
 
 MXレコードが登録されていない場合、Aレコードが使用されることがある（[MXレコードとは？優先度と確認方法 \| Proofpoint JP](https://www.proofpoint.com/jp/threat-reference/mx-record)）。
 
-## メールアドレスのドメインをIPアドレス指定できないか
+## メールアドレスのドメイン部をIPアドレスにできないか
 
 RFC上は、可能として定義されている（\[\]で指定する）が、そのように実装されないのが通常。
 
