@@ -5,7 +5,7 @@
 - [電子メール＜アプリケーションプロトコル＜ネットワーク＜Ｗｅｂ教材＜木暮仁](https://www.kogures.com/hitoshi/webtext/nw-mail/index.html)
 - [【にわか】SMTPの仕組みを独学したメモ切れ \| ぽけ手帳](https://www.pokete.com/smtp-learn)
 - [送信ドメイン認証（SPF / DKIM / DMARC）の仕組みと、なりすましメール対策への活用法を徹底解説 – エンタープライズIT [COLUMNS]](https://ent.iij.ad.jp/articles/172/)
-
+- [なりすましメール対策（SPF、DKIM、DMARC、S/MIME、PGP）](https://www.infraexpert.com/study/security30.html)
 
 ---
 
