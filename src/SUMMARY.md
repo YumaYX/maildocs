@@ -10,5 +10,4 @@
 - [13-Dovecot](./13-Dovecot.md)
 - [15-Reference1](./15-Reference1.md)
 - [20-Email_Spoofing_Protection](./20-Email_Spoofing_Protection.md)
-- [20-email_spoofing_protection](./20-email_spoofing_protection.md)
 - [SUMMARY](./SUMMARY.md)
