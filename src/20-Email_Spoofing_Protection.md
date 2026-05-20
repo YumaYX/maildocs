@@ -4,7 +4,7 @@
 ### SPF
 
 SPF（Sender Policy Framework）：メール送信元のドメイン名とIPアドレスを照合する。
-SPFはメール転送等により受信側で正しく判断できない場合もある。
+SPFはメール転送等により受信側で正しく判断できない場合もある[SPF（Sender Policy Framework） : 迷惑メール対策委員会](https://salt.iajapan.org/wpmu/anti_spam/admin/tech/explanation/spf/)。
 
 > ![SPFの仕組み](https://ent.iij.ad.jp/wp-content/uploads/2019/07/0726-spf-01.png)
 
