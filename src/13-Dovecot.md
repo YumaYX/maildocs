@@ -50,8 +50,8 @@ systemctl restart dovecot
 ```
 
 - Q. なぜ接続情報がわかるのか？
-    - A. /etc/dovecot/conf.d/に、PAMで認証する設定があるので、そこで判断できる。
-- ちなみに`vagrant`には、初期パスワードは設定されていない。
+- A. /etc/dovecot/conf.d/に、PAMで認証する設定があるので、そこで判断できる。
+- ちなみにユーザー`vagrant`には、初期パスワードは設定されていない。
 
 
 ## 結果

@@ -21,7 +21,7 @@ grep 'local_procmail' /etc/mail/sendmail.mc
 
 ```sh
 cat <<'PROCMAILEOF' | tee /etc/procmailrc
-MAILDIR=$HOME/Maildir
+MAILDIR=$HOME/Maildir/
 DEFAULT=$MAILDIR
 LOGFILE=$HOME/procmail.log
 VERBOSE=on

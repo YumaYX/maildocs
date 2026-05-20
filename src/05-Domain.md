@@ -10,7 +10,7 @@
 
 ## MXレコードの名前解決
 
-user@example.comにメールが送られる場合：
+MTAから、`user@example.com`にメールが送られる場合：
 
 1. メールアドレスのドメイン(example.com)でDNS問い合わせ
 1. MXレコードを取得(mail.example.com)
@@ -19,10 +19,10 @@ user@example.comにメールが送られる場合：
 
 MXレコードが登録されていない場合、Aレコードが使用されることがある（[MXレコードとは？優先度と確認方法 \| Proofpoint JP](https://www.proofpoint.com/jp/threat-reference/mx-record)）。
 
-## メールアドレスのドメインをIPアドレス指定できないか
+## メールアドレスのドメイン部をIPアドレスにできないか
 
 RFC上は、可能として定義されている（\[\]で指定する）が、そのように実装されないのが通常。
 
 ## 参考文献
 
-[【ドメイン】MXレコードの設定方法は？\｜ヘルプ \| ドメイン取るならお名前.com](https://help.onamae.com/answer/7889)
+[【ドメイン】MXレコードの設定方法は？｜ヘルプ \| ドメイン取るならお名前.com](https://help.onamae.com/answer/7889)

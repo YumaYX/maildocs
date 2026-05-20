@@ -9,12 +9,21 @@
 ## 目的
 
 メールを理解する。
+
 - どんなことができるのか。
 - どのような設定が必要なのか
+- しくみ上、どこが脆弱なのか。
+
+
 を理解する。
+
 
 ## 環境
 
-- AlmaLinux release 10.1 (Heliotrope Lion)
+- AlmaLinux release 9.7 (Moss Jungle Cat)
 - Vagrant 2.4.9
-  - AlmaLinux release 9.7 (Moss Jungle Cat)
+  - host: AlmaLinux release 10.1 (Heliotrope Lion)
+
+## その他
+
+メールサーバーは、運用難易度が非常に高いため、安易な覚悟でデプロイ出来ない。
