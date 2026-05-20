@@ -27,3 +27,8 @@
 ## その他
 
 メールサーバーは、運用難易度が非常に高いため、安易な覚悟でデプロイ出来ない。
+
+
+## 管理レポジトリー
+
+[GitHub - YumaYX/maildocs: mail · GitHub](https://github.com/YumaYX/maildocs)
