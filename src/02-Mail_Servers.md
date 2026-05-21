@@ -28,3 +28,30 @@
 ## 参考文献
 
 [ASCII.jp：メールを受け取る仕組みはどうなっていますか？？ (1/2)](https://ascii.jp/elem/000/000/439/439105/)
+
+
+---
+
+## 送信、受信、転送、配送
+
+MUAの送受信と、MTAの送受信は、用語を分けるべきではないか。
+
+```
+[MUA]
+   |
+   | submission
+   v
+[MTA]
+   |
+   | relay
+   v
+[相手MTA]
+   |
+   | delivery
+   v
+[Mailbox]
+   |
+   | retrieve
+   v
+[相手MUA]
+```
