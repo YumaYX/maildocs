@@ -11,5 +11,8 @@
 - [14-Mail_Result](./14-Mail_Result.md)
 - [15-Reference1](./15-Reference1.md)
 - [16-Sendmail_Config](./16-Sendmail_Config.md)
+- [17-hands-on](./17-hands-on.md)
+- [18-sendmail_config](./18-sendmail_config.md)
 - [20-Email_Spoofing_Protection](./20-Email_Spoofing_Protection.md)
+- [90-sendmail.mc_items](./90-sendmail.mc_items.md)
 - [SUMMARY](./SUMMARY.md)

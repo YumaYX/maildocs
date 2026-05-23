@@ -5,7 +5,7 @@ mdbook serve --hostname 0.0.0.0
 ```
 
 ```sh
-./../.cargo/bin/mdbook serve --hostname 0.0.0.0 -p 8000
+~/.cargo/bin/mdbook serve --hostname 0.0.0.0 -p 8000
 ```
 
 ```sh
