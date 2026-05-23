@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure('2') do |config|
+  config.vm.box = 'almalinux/9'
+
+  config.vm.provider 'libvirt' do |vb|
+    vb.memory = 1024 * 2
+    vb.cpus = 2
+    vb.video_type = 'virtio'
+  end
+
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+
+  # Server
+  config.vm.define 'single' do |server|
+    server.vm.hostname = 'server1.local'
+    server.vm.network 'private_network', ip: '172.17.64.111'
+    server.vm.provision 'shell', inline: <<~SHELL1
+      echo single
+      sudo dnf -y install sendmail m4 sendmail-cf
+      cat /etc/mail/sendmail.mc
+    SHELL1
+  end
+end

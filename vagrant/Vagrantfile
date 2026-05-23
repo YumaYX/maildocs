@@ -85,6 +85,7 @@ EOF
   end
 
   config.vm.provision 'shell', inline: <<~SHELLC
+    sudo dnf -y install firewalld
     sudo systemctl restart firewalld
     sudo firewall-cmd --permanent --zone=public --add-port=25/tcp
     sudo firewall-cmd --reload
@@ -98,7 +99,6 @@ EOF
 ETCHOSTS
 
     sudo sed -i 's@^DAEMON_OPTIONS(@dnl DAEMON_OPTIONS(@g' /etc/mail/sendmail.mc
-
 
     cat <<'PROCMAILEOF' | sudo tee /etc/procmailrc
 MAILDIR=$HOME/Maildir/
