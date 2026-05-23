@@ -10,5 +10,6 @@
 - [13-Dovecot](./13-Dovecot.md)
 - [14-Mail_Result](./14-Mail_Result.md)
 - [15-Reference1](./15-Reference1.md)
+- [16-Sendmail_Config](./16-Sendmail_Config.md)
 - [20-Email_Spoofing_Protection](./20-Email_Spoofing_Protection.md)
 - [SUMMARY](./SUMMARY.md)
