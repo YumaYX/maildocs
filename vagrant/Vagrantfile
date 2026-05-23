@@ -85,7 +85,10 @@ EOF
   end
 
   config.vm.provision 'shell', inline: <<~SHELLC
-    sudo systemctl stop firewalld || true
+    sudo systemctl restart firewalld
+    sudo firewall-cmd --permanent --zone=public --add-port=25/tcp
+    sudo firewall-cmd --reload
+
     sudo dnf -y install sendmail m4 sendmail-cf
 
     cat <<'ETCHOSTS' | tee -a /etc/hosts
