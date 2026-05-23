@@ -5,6 +5,7 @@
 |---|---|---|
 | SMTP (Simple Mail Transfer Protocol) | 平文 | 25 |
 | SMTP (Simple Mail Transfer Protocol) | SSL | 465 |
+| サブミッションポート（SMTP認証用）| STARTTLS（またはTLS） | 587 |
 | POP3 (Post Office Protocol version 3) | 平文 | 110 |
 | POP3 (Post Office Protocol version 3) | SSL | 995 |
 | IMAP4 (Internet Message Access Protocol 4) | 平文 | 143 |
