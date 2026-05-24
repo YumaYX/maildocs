@@ -14,5 +14,4 @@
 - [17-hands-on](./17-hands-on.md)
 - [18-sendmail_config](./18-sendmail_config.md)
 - [20-Email_Spoofing_Protection](./20-Email_Spoofing_Protection.md)
-- [90-sendmail.mc_items](./90-sendmail.mc_items.md)
 - [SUMMARY](./SUMMARY.md)
