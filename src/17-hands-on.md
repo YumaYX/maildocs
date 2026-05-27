@@ -15,6 +15,9 @@ NOQUEUE: SYSERR(root): opendaemonsocket: daemon MSA: cannot bind: Address alread
 
 しかし、dovecotの認証情報(OSのPAM)を使えるので、587でsubmissionを受けるのはあり。587はそのままdovecotで受ける。sendmailでは、587使用を諦める。
 
+もちろん、諦めなくても、dovecotの587だけを停めてpam(sasl)認証を使えば、sendmail mtaでもmsaを動作させられる、らしい。この検証自体、無意味なのでこれ以上は検証しない。
+
+
 MUAから25番が使われてしまうのを防ぎたい。→MTA側で、MTA(Relay)の接続、MUA(submmision)の接続の判断できないっぽいので、Firewallで制限するらしい(?)。
 
 ## Reference
