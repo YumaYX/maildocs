@@ -16,6 +16,9 @@
 - MRA（Mail Retrieval Agent）
     - POPやIMAPのメール受信のための部分
     - `Dovecot`など
+- MSA (Mail Submission Agent)
+    - メール提出/送信エージェント
+    - ユーザーのメーラー（MUA）から送られてきたメールを最初に受け取り、送信者の認証やスパム対策（SMTP-AUTHなど）を行って、配送先のサーバーへ渡す役目を持つサーバープログラムのこと
 
 ### クライアントサイド
 
