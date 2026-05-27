@@ -7,9 +7,9 @@ submissionポートは587にする。
 #sudo sed -i '/submit/ s/^dnl //' /etc/mail/sendmail.mc
 ```
 
-実施してみたが、認証なし、で587ができなかった。
+実施してみたが、認証なし、で587ができなかった。SASLが足りないのかもしれない。未確認。
 
-MUAから25番が使われてしまうのを防ぎたい。→MTA側で、MTA(Relay)の接続、MUA(submmision)の接続の判断できないっぽいので、Firewallで制限するらしい。
+MUAから25番が使われてしまうのを防ぎたい。→MTA側で、MTA(Relay)の接続、MUA(submmision)の接続の判断できないっぽいので、Firewallで制限するらしい(?)。
 
 ## Reference
 
