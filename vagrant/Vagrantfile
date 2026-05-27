@@ -29,9 +29,37 @@ LHN
 
       sleep 60
 
+      sudo dnf install -y epel-release
+      sudo dnf install -y swaks
+
+      # HELO - PLAIN
+      swaks --to vagrant@server1 \
+            --from vagrant@server1 \
+            --server server2 \
+            --port 587 \
+            --auth LOGIN \
+            --auth-user vagrant \
+            --auth-password vagrant \
+            --tls \
+            --helo server1
+
+      # EHLO - STARTTLS
+      swaks --to vagrant@server1 \
+            --from vagrant@server1 \
+            --server server2 \
+            --port 587 \
+            --auth LOGIN \
+            --auth-user vagrant \
+            --auth-password vagrant \
+            --tls \
+            --helo server1
+
+      echo; echo; echo;
+      sleep 5
+
       {
-        echo "HELO server1"
-        echo "MAIL FROM:<vagrant@server2>"
+       echo "HELO server1"
+       echo "MAIL FROM:<vagrant@server1>"
         echo "RCPT TO:<vagrant@server1>"
         echo "DATA"
         echo "Subject: this is a testmail ABC"
@@ -50,7 +78,6 @@ LHN
       echo "####### MAILDIR #######"
       sudo cat /home/vagrant/Maildir/*
 
-      (echo vagrant; echo vagrant) | sudo passwd vagrant
 
       echo
       echo "####### MAILDIR #######"
@@ -59,6 +86,8 @@ LHN
         echo PASS vagrant
         echo LIST
         echo RETR 1
+        echo RETR 2
+        echo RETR 3
         echo QUIT
       } | nc localhost 110
     SHELL1
@@ -86,9 +115,13 @@ EOF
 
   config.vm.provision 'shell', inline: <<~SHELLC
     sudo dnf -y install firewalld
-    sudo systemctl restart firewalld
+    sudo systemctl start firewalld
     sudo firewall-cmd --permanent --zone=public --add-port=25/tcp
+    sudo firewall-cmd --permanent --zone=public --add-port=587/tcp
     sudo firewall-cmd --reload
+    sudo systemctl restart firewalld
+
+    (echo vagrant; echo vagrant) | sudo passwd vagrant
 
     sudo dnf -y install sendmail m4 sendmail-cf
 
@@ -113,9 +146,26 @@ PROCMAILEOF
     sudo yum install -y dovecot
     sed -i 's/^#protocols/protocols/g' /etc/dovecot/dovecot.conf
     sed -i 's@^#   mail_location = maildir@   mail_location = maildir@g' /etc/dovecot/conf.d/10-mail.conf
-    sed -i 's@^ssl = required@ssl = no@g' /etc/dovecot/conf.d/10-ssl.conf
 
-systemctl restart dovecot
+    sed -i 's@auth_mechanisms = plain@auth_mechanisms = plain login@g' /etc/dovecot/conf.d/10-auth.conf
+
+    #sed -i 's@^ssl = required@ssl = no@g' /etc/dovecot/conf.d/10-ssl.conf
+    sed -i 's@^ssl = required@ssl = yes@g' /etc/dovecot/conf.d/10-ssl.conf
+
+    sed -i 's@^    #port = 587@    port = 587@g' /etc/dovecot/conf.d/10-master.conf
+
+    sed -i 's@^}@#}@g' /etc/dovecot/conf.d/20-submission.conf 
+    cat <<'SUBM' >> /etc/dovecot/conf.d/20-submission.conf 
+  submission_relay_host = 127.0.0.1
+  submission_relay_port = 25
+  submission_relay_trusted = yes
+}
+submission_relay_host = 127.0.0.1
+submission_relay_port = 25
+SUBM
+
+
+    systemctl restart dovecot
 
   SHELLC
 end
