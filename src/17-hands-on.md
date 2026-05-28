@@ -149,4 +149,4 @@ MUAから25番が使われてしまうのを防ぎたい。→MTA側で、MTA(Re
 
 - retrieveの110は今後検討する。
 - そもそも感があるが、sendmail使用自体が。。
-
+- Private IP addressがはいるのが嫌なら、milterでマスク、置換できる。
